@@ -131,7 +131,7 @@ public class MazeUtils {
           break;
         }
         //Solved the maze
-        if(maze[userChoice][x][y] == 2)
+        if(maze[userChoice][x][y] == 3)
         {
           System.out.println("Congralations, you solved the maze! Which one do you want to try next?");
           userChoice = input.nextInt();
