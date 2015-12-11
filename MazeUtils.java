@@ -61,6 +61,8 @@ public class MazeUtils {
       }
       else
       {
+        // arrays are zero based, so minus 1 to select the right maze
+        userChoice--;
         quitMenu = true;
       }
     } while(quitMenu == false);
@@ -76,7 +78,7 @@ public class MazeUtils {
         // Left
         if(commands.charAt(i) == 'l')
         {
-          if(maze[userChoice][x][y-1] != 1)
+          if(y-1 >= 0 && maze[userChoice][x][y-1] != 1)
           {
             y -= 1;
           }
@@ -88,7 +90,7 @@ public class MazeUtils {
         //Right
         if(commands.charAt(i) == 'r')
         {
-          if(maze[userChoice][x][y+1] != 1)
+          if(y+1 < 8 && maze[userChoice][x][y+1] != 1)
           {
             y += 1;
           }
@@ -98,7 +100,7 @@ public class MazeUtils {
           }
         }
         //Up
-        if(commands.charAt(i) == 'u')
+        if(x-1 >= 0 && commands.charAt(i) == 'u')
         {
           if(maze[userChoice][x-1][y] != 1)
           {
@@ -110,7 +112,7 @@ public class MazeUtils {
           }
         }
         //Down
-        if(commands.charAt(i) == 'd')
+        if(x+1 < 8 && commands.charAt(i) == 'd')
         {
           if(maze[userChoice][x+1][y] != 1)
           {
@@ -129,7 +131,7 @@ public class MazeUtils {
           break;
         }
         //Solved the maze
-        if(maze[userChoice][x][y]== 2)
+        if(maze[userChoice][x][y] == 2)
         {
           System.out.println("Congralations, you solved the maze! Which one do you want to try next?");
           userChoice = input.nextInt();
