@@ -4,12 +4,14 @@ public class MazeUtils {
   //Main class. Will call upon other functions.
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
+    //players starting position
     int x=7;
     int y=1;
     int mazeChoice;
     //Makes the Maze and the menu to stop appearing. (Stops Program)
     boolean quitSolvedOrQ = false;
     //3D Array with three separate mazes
+    //0 is an empty space, 1 is a wall, 3 is the finish
     int maze[][][] = {
       {
         {0,1,1,1,1,1,1,1},
@@ -32,7 +34,7 @@ public class MazeUtils {
         {0,0,0,1,1,1,1,1}
       },
       {
-        {2,1,3,1,1,1,1,1},
+        {1,1,3,1,1,1,1,1},
         {1,1,0,0,0,0,1,1},
         {1,1,0,0,0,0,1,1},
         {0,0,0,1,1,1,1,1},
@@ -43,23 +45,27 @@ public class MazeUtils {
       }
     };
 
-    //Menu
+    // welcome
     System.out.println("==========================");
     System.out.println("= Welcome to Maze Mania! =");
     System.out.println("==========================");
+    //while loop until user selects quit
     do {
+      //reset solved or quit boolean for next round
       quitSolvedOrQ = false;
       mazeChoice = displayMazeMenu(input);
-
+      // if the user entered valid input, proceed with maze
       if(mazeChoice != -1) {
         //Gets directions to move in maze and implements them
         do {
+          System.out.println();
           displayMaze(maze,x,y,mazeChoice);
           System.out.println("Enter a command: (l)eft, (r)ight, (u)p, (d)own, (q)uit");
           String commands = input.next();
 
+          // need to eventually provide user with feedback if they enter an invalid value
+
           for(int i= 0; i<commands.length(); i++) {
-            System.out.println();
             // Left
             if(commands.charAt(i) == 'l')
             {
@@ -131,17 +137,19 @@ public class MazeUtils {
     } while(true);
   }
 
+  //returns 0,1,2 for maze selection or -1 if input is not recognized; quits if player enters q
   public static int displayMazeMenu(Scanner input){
     System.out.println("To play a maze, enter a number: 1, 2, or 3.");
     System.out.println("Maze number correlates to it's level of difficulty, so choose accordingly.");
     System.out.println("Enter 'q' to quit.");
     // must be string so user can quit from main menu
     String userChoice = input.next();
-
+    //check is player entered a valid value
     if(userChoice.equals("1") || userChoice.equals("2") || userChoice.equals("3") || userChoice.equals("q"))
     {
       if(userChoice.equals("q"))
       {
+        //alternatively return a different integer value and let the main class exit
         System.exit(0);
       }
       else
@@ -153,11 +161,13 @@ public class MazeUtils {
         return mazeChoice;
       }
     }
+    //player entered an invalid value
     else
     {
       System.out.println("Please enter a maze choice: 1, 2, or 3, or enter 'q' to quit.");
       return -1;
     }
+    //no condition met
     return -1;
   }
 
