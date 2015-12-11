@@ -4,8 +4,8 @@ public class MazeUtils {
   //Main class. Will call upon other functions.
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
-    int x=8;
-    int y=2;
+    int x=7;
+    int y=1;
     int userChoice;
 
     //Makes the Menu close after entering a number. Opens again after the user solves the maze
@@ -59,29 +59,19 @@ public class MazeUtils {
       {
         System.out.println("Please enter a 1, 2, or 3");
       }
-      else if(userChoice == 1)
+      else
       {
-        displayMaze(maze,x,y,userChoice);
-        quitMenu = true;
-      }
-      else if(userChoice == 2)
-      {
-        displayMaze(maze,x,y,userChoice);
-        quitMenu = true;
-      }
-      else if(userChoice == 3)
-      {
-        displayMaze(maze,x,y, userChoice);
         quitMenu = true;
       }
     } while(quitMenu == false);
 
     //Gets directions to move in maze and implements them
     do {
-      System.out.println("Enter a command.");
-      String commands = input.nextLine();
+      displayMaze(maze,x,y,userChoice);
+      System.out.println("Enter a command: (l)eft, (r)ight, (u)p, (d)own, (q)uit");
+      String commands = input.next();
+
       for(int i= 0; i<commands.length(); i++) {
-        displayMaze(maze,x,y,userChoice);
         System.out.println();
         // Left
         if(commands.charAt(i) == 'l')
