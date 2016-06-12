@@ -1,7 +1,7 @@
 # BridgettesMaze
-Helping my little cousin with her Java class at University of Florida
+Helping my cousin with her Java class
 
-## From Bridgette
+## "Instructions"
 
 > Basically, I need to make 3 different mazes (they're all the same right now for simplicity until I get the rest of the code running perfectly), let a user select what maze they want to use, and allow them to use it.
 >
